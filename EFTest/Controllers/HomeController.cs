@@ -91,5 +91,23 @@ namespace EFTest.Controllers
             return json;
 
         }
+
+        [HttpPost]
+        public void EliminarData(string id)
+        {
+            Alumno objAlumno = new Alumno();
+            if (!String.IsNullOrEmpty(id))
+            {
+                bool result = Int32.TryParse(id, out int ident);
+                if (result)
+                {
+                    var query = from al in _dbContext.Alumnos where al.Id == ident select al;
+                    objAlumno = query.Single();
+                    _dbContext.Alumnos.Remove(objAlumno);
+                    _dbContext.SaveChanges();
+                }
+            }
+
+        }
     }
 }

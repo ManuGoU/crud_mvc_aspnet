@@ -35,6 +35,25 @@
 
 function eliminar() {
 
+    var ids;
+    ids = $('#valueId').val();
+
+    if (ids.trim() !== "") {
+        $.ajax({
+            url: '/Home/EliminarData',
+            type: 'POST',
+            data: {
+                id: ids
+            },
+            success: function () {
+                alert("Registro Eliminado Exitosamente");
+                location.reload();
+            },
+            error: function (error) {
+                alert('Ocurrio un error: ' + error);
+            }
+        });
+    }
     
 }
 
