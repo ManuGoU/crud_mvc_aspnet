@@ -1,0 +1,50 @@
+﻿@model EFTest.Models.ListaAlumnos
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="txtNombre">Nombre: </label>
+            <input type="text" id="txtNombre" placeholder="Nombre" class="form-control input-sm" />
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="txtApellido">Apellido:</label>
+            <input type="text" id="txtApellido" placeholder="Apellido" class="form-control input-sm" />
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="col-md-3">
+        <p style="font-size: large; font-style:normal; font-weight:bold">Alumnos</p>
+
+        <ul>
+            @foreach (var alumno in @Model.Alumnos)
+            {
+                <li id="@alumno.Id">@alumno.Nombres @alumno.Apellidos</li>
+            }
+        </ul>
+        <input type="hidden" id="valueId" value="" />
+    </div>
+
+    <div class="pull-right">
+        <input type="button" id="cancelar" class="btn btn-danger" data-dismiss="modal" value="Cancelar" style="display:none">
+        <input type="submit" id="enviar" class="btn btn-primary" onclick="enviar()" value="Enviar">
+        <input type="button" id="eliminar" class="btn btn-danger" onclick="eliminar()" value="Eliminar">
+        <input type="button" id="limpiar" class="btn btn-primary" onclick="limpiar()" value="Limpiar">
+    </div>
+
+</div>
