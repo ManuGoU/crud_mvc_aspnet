@@ -47,6 +47,7 @@ function eliminar() {
             },
             success: function () {
                 alert("Registro Eliminado Exitosamente");
+                $('#valueId').val('');
                 location.reload();
             },
             error: function (error) {
